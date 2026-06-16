@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lomma — سياسة الخصوصية وشروط الاستخدام | Privacy Policy &amp; Terms</title>
+<style>
+  :root {
+    --bg: #FFF8F1;
+    --card: #ffffff;
+    --ink: #2b2320;
+    --muted: #6b5d54;
+    --accent: #CB7B4B;
+    --line: #ecdfd3;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Tahoma, "Noto Naskh Arabic", Arial, sans-serif;
+    line-height: 1.75;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; }
+  header { text-align: center; margin-bottom: 8px; }
+  .mark {
+    display: inline-block; width: 60px; height: 60px; border-radius: 16px;
+    background: var(--accent); color: #fff; line-height: 60px; font-size: 30px;
+    font-weight: 800; margin-bottom: 12px;
+  }
+  h1 { font-size: 24px; margin: 4px 0; }
+  .sub { color: var(--muted); font-size: 14px; }
+  .lang-toggle { text-align: center; margin: 20px 0 28px; }
+  .lang-toggle button {
+    border: 1px solid var(--line); background: var(--card); color: var(--ink);
+    padding: 8px 18px; border-radius: 999px; cursor: pointer; font-size: 14px; margin: 0 4px;
+  }
+  .lang-toggle button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+    padding: 24px 22px; margin-bottom: 18px;
+  }
+  h2 { font-size: 18px; color: var(--accent); margin: 0 0 10px; }
+  h3 { font-size: 15px; margin: 18px 0 6px; }
+  p, li { font-size: 15px; color: var(--ink); }
+  ul { padding-inline-start: 22px; margin: 8px 0; }
+  .muted { color: var(--muted); font-size: 13px; }
+  .updated { text-align: center; color: var(--muted); font-size: 13px; margin-top: 24px; }
+  section[hidden] { display: none; }
+  a { color: var(--accent); }
+  .en { direction: ltr; text-align: left; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="mark">ل</div>
+    <h1>Lomma · لئمة</h1>
+    <div class="sub">سياسة الخصوصية وشروط الاستخدام · Privacy Policy &amp; Terms of Service</div>
+  </header>
+
+  <div class="lang-toggle">
+    <button id="btn-ar" class="active" onclick="setLang('ar')">العربية</button>
+    <button id="btn-en" onclick="setLang('en')">English</button>
+  </div>
+
+  <!-- ============ ARABIC ============ -->
+  <section id="ar">
+    <div class="card">
+      <h2>سياسة الخصوصية</h2>
+      <p>نحن في لئمة نحترم خصوصيتك، وصُمّم التطبيق ليجمع أقل قدر ممكن من البيانات. توضّح هذه السياسة ما الذي نخزّنه وكيف نستخدمه.</p>
+
+      <h3>١. البيانات المحفوظة على جهازك فقط</h3>
+      <p>تُخزَّن المعلومات التالية محلياً على جهازك ولا تُرسَل إلى خوادمنا:</p>
+      <ul>
+        <li>تفضيلاتك الغذائية (مثل القيود الغذائية والحساسية) واختيارك للمخاطبة، لتخصيص التجربة.</li>
+        <li>نسخة محلية من رصيد تجربتك المجانية (السجلّ الأساسي محفوظ على خادمنا — انظر القسم ٣).</li>
+        <li>وصفاتك المفضّلة وسجلّ وصفاتك الأخيرة.</li>
+        <li>تقييماتك للوصفات وأي ملاحظات تكتبها.</li>
+      </ul>
+      <p>يمكنك حذف هذه البيانات بحذف التطبيق من جهازك.</p>
+
+      <h3>٢. البيانات التي تُرسَل لإنشاء الوصفات</h3>
+      <p>عندما تطلب وصفة، تُرسَل المكوّنات التي تكتبها وتفضيلاتك المتعلّقة بالوصفة (مثل عدد الأشخاص ونوع الوجبة) إلى خادمنا الآمن، الذي يستخدم خدمة ذكاء اصطناعي من جهة خارجية (Anthropic) لإنشاء اقتراح الوصفة. لا نرسل أي معلومة تعرّف هويتك الشخصية مع هذا الطلب.</p>
+
+      <h3>٣. الحساب المجهول وتسجيل الدخول والمشتريات</h3>
+      <p>عند أول تشغيل للتطبيق، يُنشأ مُعرّف حساب مجهول تلقائياً (عبر تسجيل الدخول المجهول في خدمة Supabase) دون أي بيانات شخصية، لربط تجربتك المجانية به. نحفظ على خادمنا سجلّ تجربتك المجانية (عدد الاستشارات المجانية المتبقية وتاريخ التثبيت) مرتبطاً بهذا المُعرّف المجهول، حتى لا تُعاد التجربة بمجرد إعادة تثبيت التطبيق. كما نحفظ نسخة مُجزّأة (hashed) من عنوان IP الخاص بك — وليس العنوان الأصلي — تُستخدم فقط للحدّ من كثرة الطلبات ومنع إساءة الاستخدام.</p>
+      <p>التطبيق مجاني للتجربة دون أي حساب. إذا اخترتَ شراء استشارات إضافية، يُطلب منك تسجيل الدخول بحساب Google أو Apple لديك (عبر خدمة Supabase الآمنة) وذلك فقط لحماية رصيدك المدفوع وربطه بك حتى لو غيّرت جهازك. نحفظ رصيدك المدفوع على خادمنا مرتبطاً بحسابك. تُعالَج عمليات الدفع نفسها بالكامل عبر متجر التطبيقات (Google Play أو App Store)؛ نحن لا نرى ولا نخزّن بيانات بطاقتك.</p>
+
+      <h3>٤. ما لا نجمعه</h3>
+      <p>لا نجمع موقعك الجغرافي، ولا جهات اتصالك، ولا صورك، ولا أي بيانات حسّاسة، ولا نبيع بياناتك لأي طرف.</p>
+
+      <h3>٥. خدمات خارجية</h3>
+      <p>يعتمد التطبيق على خدمات موثوقة لتشغيله: Google Play وApp Store (المتجر والدفع)، وSupabase (الخادم وتسجيل الدخول)، وAnthropic (إنشاء الوصفات). لكلٍّ منها سياسة خصوصية خاصة به.</p>
+
+      <h3>٦. الأطفال</h3>
+      <p>التطبيق غير موجّه للأطفال دون سنّ ١٣ عاماً، ولا نجمع بياناتهم عن قصد.</p>
+
+      <h3>٧. حذف حسابك وبياناتك</h3>
+      <p>يمكنك حذف حسابك وبياناتك في أي وقت من داخل التطبيق: افتح صفحة المساعدة/التواصل واختر «حذف حسابي وبياناتي». يؤدي ذلك إلى محو مُعرّف حسابك المجهول وسجلّ تجربتك المجانية ورصيد استشاراتك المدفوعة نهائياً. الحذف فوري ولا يمكن التراجع عنه — وتُفقَد أي استشارات مدفوعة متبقية ولا يمكن استردادها. ولأغراض الحماية من الاحتيال وإعادة الاستخدام ولمتطلّبات المحاسبة والضرائب، نحتفظ بسجلّ لعمليات الشراء السابقة بصيغة مجهولة الهوية (غير مرتبطة بك). كما يمكنك طلب الحذف عبر مراسلتنا على <a href="mailto:the.bite@outlook.com">the.bite@outlook.com</a>، وسننفّذه خلال ٣٠ يوماً.</p>
+
+      <h3>٨. تواصل معنا</h3>
+      <p>لأي سؤال حول الخصوصية، راسلنا على: <a href="mailto:the.bite@outlook.com">the.bite@outlook.com</a></p>
+    </div>
+
+    <div class="card">
+      <h2>شروط الاستخدام</h2>
+
+      <h3>١. طبيعة التطبيق</h3>
+      <p>لئمة تطبيق لاقتراح وصفات الطبخ بناءً على المكوّنات المتوفّرة لديك، مع لمسة من الراحة والمزاج أثناء الطبخ. الوصفات والاقتراحات لأغراض عامة وللمتعة، وقد تتولّد عبر الذكاء الاصطناعي.</p>
+
+      <h3>٢. تنبيه غذائي وصحي مهم</h3>
+      <p>اقتراحات لئمة ليست نصيحة طبية أو غذائية متخصّصة. أنت مسؤول عن التأكّد من ملاءمة أي وصفة لحالتك الصحية وحساسيتك الغذائية. راجع المكوّنات بنفسك دائماً، خاصة إن كانت لديك حساسية أو قيود غذائية أو دينية. لا نتحمّل مسؤولية أي ضرر ناتج عن اتباع وصفة.</p>
+
+      <h3>٣. الاستشارات والمدفوعات</h3>
+      <p>تحصل على عدد محدود من الاستشارات المجانية. الاستشارات الإضافية تُشترى عبر باقات داخل التطبيق. المشتريات نهائية، وتخضع لسياسة الاسترداد الخاصة بمتجر التطبيقات (Google Play أو App Store).</p>
+
+      <h3>٤. الاستخدام المقبول</h3>
+      <p>توافق على استخدام التطبيق للغرض المخصّص له (اقتراح الوصفات)، وعدم محاولة إساءة استخدامه أو التلاعب به.</p>
+
+      <h3>٥. تغييرات على الخدمة</h3>
+      <p>قد نطوّر التطبيق أو نعدّل ميزاته أو أسعاره مستقبلاً. سنحاول إبلاغك بالتغييرات الجوهرية.</p>
+
+      <h3>٦. تواصل معنا</h3>
+      <p>لأي استفسار: <a href="mailto:the.bite@outlook.com">the.bite@outlook.com</a></p>
+    </div>
+    <div class="updated">آخر تحديث: ١٦ يونيو ٢٠٢٦</div>
+  </section>
+
+  <!-- ============ ENGLISH ============ -->
+  <section id="en" class="en" hidden>
+    <div class="card">
+      <h2>Privacy Policy</h2>
+      <p>At Lomma we respect your privacy, and the app is designed to collect as little data as possible. This policy explains what we store and how we use it.</p>
+
+      <h3>1. Data kept only on your device</h3>
+      <p>The following is stored locally on your device and is never sent to our servers:</p>
+      <ul>
+        <li>Your dietary preferences (such as restrictions and allergies) and your chosen form of address, to personalize the experience.</li>
+        <li>A local copy of your free-trial balance (the authoritative record is kept on our server — see section 3).</li>
+        <li>Your favorite recipes and your recent-recipe history.</li>
+        <li>Your recipe ratings and any notes you write.</li>
+      </ul>
+      <p>You can delete this data by removing the app from your device.</p>
+
+      <h3>2. Data sent to generate recipes</h3>
+      <p>When you request a recipe, the ingredients you type and your recipe-related preferences (such as number of people and meal type) are sent to our secure server, which uses a third-party AI service (Anthropic) to generate the recipe suggestion. We do not send any personally identifying information with this request.</p>
+
+      <h3>3. Anonymous account, sign-in and purchases</h3>
+      <p>When you first open the app, an anonymous account identifier is created automatically (via Supabase anonymous sign-in), with no personal data, to anchor your free trial. We store your free-trial ledger (the number of free consultations remaining and your install date) on our server, linked to this anonymous identifier, so the trial cannot simply be reset by reinstalling the app. We also store a hashed (not raw) version of your IP address, used only for rate-limiting and abuse prevention.</p>
+      <p>The app is free to try with no account. If you choose to buy additional consultations, you are asked to sign in with your Google or Apple account (via the secure Supabase service) solely to protect your paid balance and keep it linked to you even if you change devices. We store your paid balance on our server, linked to your account. Payments themselves are processed entirely by the app store (Google Play or the App Store); we never see or store your card details.</p>
+
+      <h3>4. What we do not collect</h3>
+      <p>We do not collect your location, contacts, photos, or any sensitive data, and we do not sell your data to anyone.</p>
+
+      <h3>5. Third-party services</h3>
+      <p>The app relies on trusted services to operate: Google Play and the App Store (store &amp; payments), Supabase (server &amp; sign-in), and Anthropic (recipe generation). Each has its own privacy policy.</p>
+
+      <h3>6. Children</h3>
+      <p>The app is not directed at children under 13, and we do not knowingly collect their data.</p>
+
+      <h3>7. Deleting your account &amp; data</h3>
+      <p>You can delete your account and its data at any time from inside the app: open the help/contact sheet and choose "Delete my account &amp; data". This permanently erases your anonymous account id, your free-trial ledger, and your paid-credit balance. Deletion is immediate and cannot be undone — any remaining paid consultations are lost and cannot be refunded or restored. For fraud and replay protection and for accounting/tax requirements, a record of past purchase transactions is kept in de-identified form (no longer linked to you). You can also request deletion by emailing <a href="mailto:the.bite@outlook.com">the.bite@outlook.com</a>, and we will action it within 30 days.</p>
+
+      <h3>8. Contact us</h3>
+      <p>For any privacy question, email us at: <a href="mailto:the.bite@outlook.com">the.bite@outlook.com</a></p>
+    </div>
+
+    <div class="card">
+      <h2>Terms of Service</h2>
+
+      <h3>1. Nature of the app</h3>
+      <p>Lomma is an app that suggests cooking recipes based on the ingredients you have, with a touch of comfort and mood while cooking. Recipes and suggestions are for general and enjoyment purposes and may be generated by AI.</p>
+
+      <h3>2. Important dietary &amp; health notice</h3>
+      <p>Lomma suggestions are not professional medical or dietary advice. You are responsible for ensuring any recipe suits your health condition and dietary needs. Always review the ingredients yourself, especially if you have allergies or dietary or religious restrictions. We are not liable for any harm resulting from following a recipe.</p>
+
+      <h3>3. Consultations &amp; payments</h3>
+      <p>You receive a limited number of free consultations. Additional consultations are purchased via in-app bundles. Purchases are final and subject to the app store (Google Play or App Store) refund policy.</p>
+
+      <h3>4. Acceptable use</h3>
+      <p>You agree to use the app for its intended purpose (recipe suggestions) and not to attempt to misuse or tamper with it.</p>
+
+      <h3>5. Changes to the service</h3>
+      <p>We may improve the app or change its features or pricing in the future. We will try to notify you of material changes.</p>
+
+      <h3>6. Contact us</h3>
+      <p>For any inquiry: <a href="mailto:the.bite@outlook.com">the.bite@outlook.com</a></p>
+    </div>
+    <div class="updated">Last updated: June 16, 2026</div>
+  </section>
+</div>
+
+<script>
+  function setLang(lang) {
+    var ar = document.getElementById('ar');
+    var en = document.getElementById('en');
+    var btnAr = document.getElementById('btn-ar');
+    var btnEn = document.getElementById('btn-en');
+    if (lang === 'ar') {
+      ar.hidden = false; en.hidden = true;
+      document.documentElement.lang = 'ar'; document.documentElement.dir = 'rtl';
+      btnAr.classList.add('active'); btnEn.classList.remove('active');
+    } else {
+      ar.hidden = true; en.hidden = false;
+      document.documentElement.lang = 'en'; document.documentElement.dir = 'ltr';
+      btnEn.classList.add('active'); btnAr.classList.remove('active');
+    }
+  }
+</script>
+</body>
+</html>
