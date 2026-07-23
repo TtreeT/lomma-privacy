@@ -81,7 +81,7 @@
       <p>يمكنك حذف هذه البيانات بحذف التطبيق من جهازك.</p>
 
       <h3>٢. البيانات التي تُرسَل لإنشاء الوصفات</h3>
-      <p>عندما تطلب وصفة، تُرسَل المكوّنات التي تكتبها (أو تمليها صوتياً) وتفضيلاتك المتعلّقة بالوصفة (مثل عدد الأشخاص ونوع الوجبة) إلى خادمنا الآمن، الذي يستخدم خدمة ذكاء اصطناعي من جهة خارجية (Anthropic) لإنشاء اقتراح الوصفة. لا نرسل أي معلومة تعرّف هويتك الشخصية مع هذا الطلب.</p>
+      <p>عندما تطلب وصفة، تُرسَل المكوّنات التي تكتبها (أو تمليها صوتياً) وتفضيلاتك المتعلّقة بالوصفة (مثل عدد الأشخاص ونوع الوجبة) إلى خادمنا الآمن، الذي يستخدم الذكاء الاصطناعي لإنشاء اقتراح الوصفة. لا نرسل أي معلومة تعرّف هويتك الشخصية مع هذا الطلب.</p>
 
       <h3>٢-أ. الإدخال الصوتي (الميكروفون)</h3>
       <p>يمكنك اختيارياً إملاء مكوّناتك بالصوت بدل الكتابة. عند استخدام هذه الميزة، يُحوَّل صوتك إلى نص عبر خدمة التعرّف على الكلام المدمجة في نظام جهازك (مثل خدمة Google أو Samsung، وقد تعالج بعض الأجهزة الصوت سحابياً وفق إعدادات جهازك). نحن لا نسجّل صوتك ولا نخزّنه ولا يصل أي مقطع صوتي إلى خوادمنا — يصلنا النص الناتج فقط، ويُعامل تماماً كالمكوّنات المكتوبة. استخدام الميكروفون اختياري بالكامل ويتطلّب إذنك، ويمكنك سحب الإذن من إعدادات جهازك في أي وقت.</p>
@@ -89,21 +89,30 @@
       <h3>٢-ب. البلاغات وجودة التطبيق</h3>
       <p>إذا استخدمت زرّ «الإبلاغ عن مشكلة» في وصفة، يُرسَل نص بلاغك مع اسم الوصفة وتقييمك إلى خادمنا مرتبطاً بمُعرّف حسابك، لنراجعه ونحسّن السلامة والجودة. كما يرسل التطبيق تلقائياً تقارير أعطال تقنية مقتضبة (نص الخطأ التقني دون أي محتوى شخصي) لمساعدتنا على إصلاح المشاكل. تُحذف هذه السجلات مع حذف حسابك أو تُفصل عن هويتك.</p>
 
+      <h3>٢-ج. المسح بالصورة والاستيراد من روابط</h3>
+      <p>عند استخدام ميزة المسح بالصورة أو الاستيراد من رابط (مثل رابط وصفة من موقع أو تطبيق تواصل)، تُرسَل الصورة التي تلتقطها أو تختارها، أو الرابط الذي تلصقه، إلى خادمنا الآمن والذكاء الاصطناعي لاستخراج المكوّنات أو الوصفة. تُعالَج الصورة أو الرابط لهذا الغرض فقط، ولا نحتفظ بالصورة على خوادمنا. هذه الميزات اختيارية ولا تعمل إلا حين تستخدمها.</p>
+
       <h3>٣. الحساب المجهول وتسجيل الدخول والمشتريات</h3>
-      <p>عند أول تشغيل للتطبيق، يُنشأ مُعرّف حساب مجهول تلقائياً (عبر تسجيل الدخول المجهول في خدمة Supabase) دون أي بيانات شخصية، لربط تجربتك المجانية به. نحفظ على خادمنا سجلّ تجربتك المجانية (عدد الاستشارات المجانية المتبقية وتاريخ التثبيت) مرتبطاً بهذا المُعرّف المجهول، حتى لا تُعاد التجربة بمجرد إعادة تثبيت التطبيق. كما نحفظ نسخة مُجزّأة (hashed) من عنوان IP الخاص بك — وليس العنوان الأصلي — تُستخدم فقط للحدّ من كثرة الطلبات ومنع إساءة الاستخدام.</p>
-      <p>التطبيق مجاني للتجربة دون أي حساب. إذا اخترتَ شراء استشارات إضافية أو باقة «بلا حدود»، يُطلب منك تسجيل الدخول بحساب Google أو Apple لديك (عبر خدمة Supabase الآمنة) وذلك فقط لحماية مشترياتك وربطها بك حتى لو غيّرت جهازك. نحفظ على خادمنا رصيدك المدفوع وتاريخ انتهاء باقتك غير المحدودة (إن اشتريتها) مرتبطَين بحسابك. تُعالَج عمليات الدفع نفسها بالكامل عبر متجر التطبيقات (Google Play أو App Store)؛ نحن لا نرى ولا نخزّن بيانات بطاقتك.</p>
+      <p>عند أول تشغيل للتطبيق، يُنشأ مُعرّف حساب مجهول تلقائياً (عبر تسجيل الدخول المجهول في قاعدة بياناتنا) دون أي بيانات شخصية، لربط تجربتك المجانية به. نحفظ على خادمنا سجلّ تجربتك المجانية (عدد الاستشارات المجانية المتبقية وتاريخ التثبيت) مرتبطاً بهذا المُعرّف المجهول، حتى لا تُعاد التجربة بمجرد إعادة تثبيت التطبيق. كما نحفظ نسخة مُجزّأة (hashed) من عنوان IP الخاص بك — وليس العنوان الأصلي — تُستخدم فقط للحدّ من كثرة الطلبات ومنع إساءة الاستخدام. كما نقرأ مُعرّف جهازك (مثل ANDROID_ID على أندرويد أو identifierForVendor على آبل) ونخزّن منه نسخة مُجزّأة (hashed) فقط، لربط تجربتك المجانية بالجهاز ومنع تكرارها بإعادة التثبيت وللتحقّق من أكواد العروض — لا نخزّن المُعرّف الأصلي.</p>
+      <p>التطبيق مجاني للتجربة دون أي حساب. إذا اخترتَ شراء وحدات إضافية (باقات وحدات)، يُطلب منك تسجيل الدخول بحساب Google أو Apple لديك (عبر خدمتنا الآمنة) وذلك فقط لحماية مشترياتك وربطها بك حتى لو غيّرت جهازك. نحفظ على خادمنا رصيدك المدفوع (وإن كان لديك اشتراك غير محدود سابق، تاريخ انتهائه) مرتبطاً بحسابك. تُعالَج عمليات الدفع نفسها بالكامل عبر متجر التطبيقات (Google Play أو App Store)؛ نحن لا نرى ولا نخزّن بيانات بطاقتك.</p>
+
+      <h3>٣-أ. الإشعارات ورسائل التطبيق</h3>
+      <p>إذا سمحت بالإشعارات، نسجّل «رمز إشعار» خاصاً بجهازك عبر خدمة إشعارات، لنرسل لك رسائل خدمة أو ردود دعم أو إعلانات. الإشعارات اختيارية ويمكنك إيقافها من إعدادات جهازك في أي وقت، وعندها يُلغى الرمز. قد نعرض لك أيضاً رسائل أحادية الاتجاه داخل «صندوق الوارد» في التطبيق (ردود الدعم والإعلانات)، ولا يمكنك الرد عليها داخل التطبيق.</p>
+
+      <h3>٣-ب. معلومات أساسية للدعم والتخصيص</h3>
+      <p>نحفظ على خادمنا معلومات محدودة مرتبطة بمُعرّفك لتحسين الدعم والتخصيص: صيغة المخاطبة التي اخترتها، لغة التطبيق، دولتك على مستوى البلد فقط (تُستنتج من عنوان IP عبر مزوّد الشبكة، وليست موقعاً جغرافياً دقيقاً)، وتاريخ آخر نشاط لك. تُستخدم هذه المعلومات لدعمك وإرسال إعلانات مناسبة، وتُحذف عند حذف حسابك.</p>
 
       <h3>٤. ما لا نجمعه</h3>
-      <p>لا نجمع موقعك الجغرافي، ولا جهات اتصالك، ولا صورك، ولا تسجيلاتك الصوتية، ولا أي بيانات حسّاسة، ولا نبيع بياناتك لأي طرف، ولا نعرض إعلانات.</p>
+      <p>لا نجمع موقعك الجغرافي الدقيق (GPS)، ولا جهات اتصالك، ولا تسجيلاتك الصوتية، ولا أي بيانات حسّاسة، ولا نبيع بياناتك لأي طرف، ولا نعرض إعلانات. لا نصل إلى صور المعرض عندك؛ الصور الوحيدة التي تُعالَج هي التي تلتقطها أو تختارها بنفسك لميزة المسح/الاستيراد (انظر القسم ٢-ج)، وتُعالَج مؤقتاً لاستخراج المكوّنات ولا نحتفظ بها. نستنتج فقط دولتك على مستوى البلد من عنوان IP (وليس موقعاً دقيقاً) — انظر القسم ٣-ب.</p>
 
       <h3>٥. خدمات خارجية</h3>
-      <p>يعتمد التطبيق على خدمات موثوقة لتشغيله: Google Play وApp Store (المتجر والدفع)، وSupabase (الخادم وتسجيل الدخول)، وAnthropic (إنشاء الوصفات). لكلٍّ منها سياسة خصوصية خاصة به.</p>
+      <p>يعتمد التطبيق على خدمات موثوقة لتشغيله: Google Play وApp Store (المتجر والدفع)، وخدمة استضافة وقاعدة بيانات آمنة (الخادم وتسجيل الدخول)، والذكاء الاصطناعي (إنشاء الوصفات)، وخدمة إشعارات (التنبيهات)، ومزوّد شبكة (توصيل الشبكة وتحديد الدولة من عنوان IP). لكلٍّ منها سياسة خصوصية خاصة به.</p>
 
       <h3>٦. الأطفال</h3>
       <p>التطبيق غير موجّه للأطفال دون سنّ ١٣ عاماً، ولا نجمع بياناتهم عن قصد.</p>
 
       <h3>٧. حذف حسابك وبياناتك</h3>
-      <p>يمكنك حذف حسابك وبياناتك في أي وقت من داخل التطبيق: افتح صفحة المساعدة/التواصل واختر «حذف حسابي وبياناتي». يؤدي ذلك إلى محو مُعرّف حسابك المجهول وسجلّ تجربتك المجانية ورصيد استشاراتك المدفوعة نهائياً. الحذف فوري ولا يمكن التراجع عنه — وتُفقَد أي استشارات مدفوعة متبقية ولا يمكن استردادها. ولأغراض الحماية من الاحتيال وإعادة الاستخدام ولمتطلّبات المحاسبة والضرائب، نحتفظ بسجلّ لعمليات الشراء السابقة بصيغة مجهولة الهوية (غير مرتبطة بك). كما يمكنك طلب الحذف عبر مراسلتنا على <a href="mailto:the.bite@outlook.com">the.bite@outlook.com</a>، وسننفّذه خلال ٣٠ يوماً.</p>
+      <p>يمكنك حذف حسابك وبياناتك في أي وقت من داخل التطبيق: افتح صفحة المساعدة/التواصل واختر «حذف حسابي وبياناتي». يؤدي ذلك إلى محو مُعرّف حسابك المجهول وسجلّ تجربتك المجانية ورصيد وحداتك المدفوعة ورموز الإشعارات ورسائلك ومعلوماتك الأساسية (صيغة المخاطبة واللغة والدولة وآخر نشاط) نهائياً. الحذف فوري ولا يمكن التراجع عنه — وتُفقَد أي استشارات مدفوعة متبقية ولا يمكن استردادها. ولأغراض الحماية من الاحتيال وإعادة الاستخدام ولمتطلّبات المحاسبة والضرائب، نحتفظ بسجلّ لعمليات الشراء السابقة بصيغة مجهولة الهوية (غير مرتبطة بك). كما يمكنك طلب الحذف عبر مراسلتنا على <a href="mailto:the.bite@outlook.com">the.bite@outlook.com</a>، وسننفّذه خلال ٣٠ يوماً.</p>
 
       <h3>٨. تواصل معنا</h3>
       <p>لأي سؤال حول الخصوصية، راسلنا على: <a href="mailto:the.bite@outlook.com">the.bite@outlook.com</a></p>
@@ -119,7 +128,7 @@
       <p>اقتراحات لئمة ليست نصيحة طبية أو غذائية متخصّصة. أنت مسؤول عن التأكّد من ملاءمة أي وصفة لحالتك الصحية وحساسيتك الغذائية. راجع المكوّنات بنفسك دائماً، خاصة إن كانت لديك حساسية أو قيود غذائية أو دينية. لا نتحمّل مسؤولية أي ضرر ناتج عن اتباع وصفة.</p>
 
       <h3>٣. الاستشارات والمدفوعات</h3>
-      <p>تحصل على عدد محدود من الاستشارات المجانية. الاستشارات الإضافية تُشترى عبر باقات داخل التطبيق، ومنها باقة «بلا حدود» تتيح استشارات مفتوحة لمدة ٣٠ يوماً من تاريخ الشراء (وشراؤها مجدداً يمدّد المدة ٣٠ يوماً إضافية)، مع حدود استخدام عادلة لمنع إساءة الاستخدام الآلي. المشتريات نهائية، وتخضع لسياسة الاسترداد الخاصة بمتجر التطبيقات (Google Play أو App Store).</p>
+      <p>يُقاس استخدام التطبيق بـ«وحدات». تحصل على عدد محدود من الوحدات المجانية، ويمكنك شراء وحدات إضافية عبر باقات داخل التطبيق (٥ / ١٠ / ٢٠ / ٥٠ / ١٠٠ وحدة)، مع حدود استخدام عادلة لمنع إساءة الاستخدام الآلي. المشتريات نهائية، وتخضع لسياسة الاسترداد الخاصة بمتجر التطبيقات (Google Play أو App Store).</p>
 
       <h3>٤. الاستخدام المقبول</h3>
       <p>توافق على استخدام التطبيق للغرض المخصّص له (اقتراح الوصفات)، وعدم محاولة إساءة استخدامه أو التلاعب به.</p>
@@ -135,7 +144,7 @@
       <h2>إخلاء المسؤولية</h2>
       <p>وصفات لئمة يولّدها الذكاء الاصطناعي حسب المكونات اللي بتكتبها. منرشّح مسببات الحساسية والمكونات غير الحلال بأفضل ما نقدر، بس هالترشيح تقني ومش معصوم — إذا عندك حساسية (خصوصًا الشديدة) أو قيود غذائية صارمة، تأكد دائمًا بنفسك من كل مكوّن وملصقات المنتجات قبل الطبخ والأكل. السعرات أرقام تقديرية. لئمة مش بديل عن استشارة طبية أو غذائية متخصصة.</p>
     </div>
-    <div class="updated">آخر تحديث: ١١ يوليو ٢٠٢٦</div>
+    <div class="updated">آخر تحديث: ٢٢ يوليو ٢٠٢٦</div>
   </section>
 
   <!-- ============ ENGLISH ============ -->
@@ -155,7 +164,7 @@
       <p>You can delete this data by removing the app from your device.</p>
 
       <h3>2. Data sent to generate recipes</h3>
-      <p>When you request a recipe, the ingredients you type (or dictate by voice) and your recipe-related preferences (such as number of people and meal type) are sent to our secure server, which uses a third-party AI service (Anthropic) to generate the recipe suggestion. We do not send any personally identifying information with this request.</p>
+      <p>When you request a recipe, the ingredients you type (or dictate by voice) and your recipe-related preferences (such as number of people and meal type) are sent to our secure server, which uses an AI service to generate the recipe suggestion. We do not send any personally identifying information with this request.</p>
 
       <h3>2a. Voice input (microphone)</h3>
       <p>You can optionally dictate your ingredients instead of typing. When you use this feature, your speech is converted to text by your device's built-in speech-recognition service (such as Google's or Samsung's; some devices may process audio in the cloud according to your device settings). We do not record or store your voice, and no audio ever reaches our servers — we receive only the resulting text, which is treated exactly like typed ingredients. Microphone use is entirely optional, requires your permission, and can be revoked in your device settings at any time.</p>
@@ -163,21 +172,30 @@
       <h3>2b. Reports &amp; app quality</h3>
       <p>If you use the "report a problem" button on a recipe, your report text along with the recipe title and your rating is sent to our server, linked to your account identifier, so we can review it and improve safety and quality. The app also automatically sends brief technical crash reports (the technical error text, with no personal content) to help us fix problems. These records are deleted or de-identified when you delete your account.</p>
 
+      <h3>2c. Photo scan &amp; link import</h3>
+      <p>When you use the photo-scan or link-import feature (for example a recipe link from a website or social app), the image you capture or pick, or the link you paste, is sent to our secure server and the AI service to extract the ingredients or recipe. The image or link is processed only for this purpose, and we do not retain the image on our servers. These features are optional and run only when you use them.</p>
+
       <h3>3. Anonymous account, sign-in and purchases</h3>
-      <p>When you first open the app, an anonymous account identifier is created automatically (via Supabase anonymous sign-in), with no personal data, to anchor your free trial. We store your free-trial ledger (the number of free consultations remaining and your install date) on our server, linked to this anonymous identifier, so the trial cannot simply be reset by reinstalling the app. We also store a hashed (not raw) version of your IP address, used only for rate-limiting and abuse prevention.</p>
-      <p>The app is free to try with no account. If you choose to buy additional consultations or the "unlimited" pass, you are asked to sign in with your Google or Apple account (via the secure Supabase service) solely to protect your purchases and keep them linked to you even if you change devices. We store your paid balance and, if purchased, your unlimited-pass expiry date on our server, linked to your account. Payments themselves are processed entirely by the app store (Google Play or the App Store); we never see or store your card details.</p>
+      <p>When you first open the app, an anonymous account identifier is created automatically (via an anonymous sign-in in our database), with no personal data, to anchor your free trial. We store your free-trial ledger (the number of free consultations remaining and your install date) on our server, linked to this anonymous identifier, so the trial cannot simply be reset by reinstalling the app. We also store a hashed (not raw) version of your IP address, used only for rate-limiting and abuse prevention. We also read your device identifier (such as ANDROID_ID on Android or identifierForVendor on Apple) and store only a hashed version of it, to anchor your free trial to the device, prevent reinstall abuse, and validate promo codes — we do not store the raw identifier.</p>
+      <p>The app is free to try with no account. If you choose to buy additional units (unit packs), you are asked to sign in with your Google or Apple account (via our secure service) solely to protect your purchases and keep them linked to you even if you change devices. We store your paid balance (and, if you have a prior unlimited pass, its expiry date) on our server, linked to your account. Payments themselves are processed entirely by the app store (Google Play or the App Store); we never see or store your card details.</p>
+
+      <h3>3a. Notifications &amp; in-app messages</h3>
+      <p>If you allow notifications, we register a device push token via a push-notification service so we can send you service messages, support replies, or announcements. Notifications are optional and can be turned off in your device settings at any time, after which the token is unregistered. We may also show you one-way messages in an in-app inbox (support replies and announcements) — you cannot reply to them inside the app.</p>
+
+      <h3>3b. Basic info for support &amp; personalization</h3>
+      <p>We store limited information linked to your identifier to improve support and personalization: your chosen form of address, your app language, your country at the country level only (inferred from your IP via our network provider, not a precise location), and your last-active date. This information is used to support you and send relevant announcements, and is deleted when you delete your account.</p>
 
       <h3>4. What we do not collect</h3>
-      <p>We do not collect your location, contacts, photos, voice recordings, or any sensitive data; we do not sell your data to anyone; and we do not show ads.</p>
+      <p>We do not collect your precise (GPS) location, your contacts, your voice recordings, or any sensitive data; we do not sell your data to anyone; and we do not show ads. We do not access your photo gallery; the only images processed are those you capture or pick yourself for the scan/import feature (see section 2c), processed transiently to extract ingredients and not retained. We infer only your country-level location from your IP address (never a precise location) — see section 3b.</p>
 
       <h3>5. Third-party services</h3>
-      <p>The app relies on trusted services to operate: Google Play and the App Store (store &amp; payments), Supabase (server &amp; sign-in), and Anthropic (recipe generation). Each has its own privacy policy.</p>
+      <p>The app relies on trusted services to operate: Google Play and the App Store (store &amp; payments), a secure hosting &amp; database service (server &amp; sign-in), an AI service (recipe generation), a push-notification service (notifications), and a network provider (network delivery and country-from-IP). Each has its own privacy policy.</p>
 
       <h3>6. Children</h3>
       <p>The app is not directed at children under 13, and we do not knowingly collect their data.</p>
 
       <h3>7. Deleting your account &amp; data</h3>
-      <p>You can delete your account and its data at any time from inside the app: open the help/contact sheet and choose "Delete my account &amp; data". This permanently erases your anonymous account id, your free-trial ledger, and your paid-credit balance. Deletion is immediate and cannot be undone — any remaining paid consultations are lost and cannot be refunded or restored. For fraud and replay protection and for accounting/tax requirements, a record of past purchase transactions is kept in de-identified form (no longer linked to you). You can also request deletion by emailing <a href="mailto:the.bite@outlook.com">the.bite@outlook.com</a>, and we will action it within 30 days.</p>
+      <p>You can delete your account and its data at any time from inside the app: open the help/contact sheet and choose "Delete my account &amp; data". This permanently erases your anonymous account id, your free-trial ledger, your paid unit balance, your push tokens, your messages, and your basic info (form of address, language, country, last active). Deletion is immediate and cannot be undone — any remaining paid consultations are lost and cannot be refunded or restored. For fraud and replay protection and for accounting/tax requirements, a record of past purchase transactions is kept in de-identified form (no longer linked to you). You can also request deletion by emailing <a href="mailto:the.bite@outlook.com">the.bite@outlook.com</a>, and we will action it within 30 days.</p>
 
       <h3>8. Contact us</h3>
       <p>For any privacy question, email us at: <a href="mailto:the.bite@outlook.com">the.bite@outlook.com</a></p>
@@ -193,7 +211,7 @@
       <p>Lomma suggestions are not professional medical or dietary advice. You are responsible for ensuring any recipe suits your health condition and dietary needs. Always review the ingredients yourself, especially if you have allergies or dietary or religious restrictions. We are not liable for any harm resulting from following a recipe.</p>
 
       <h3>3. Consultations &amp; payments</h3>
-      <p>You receive a limited number of free consultations. Additional consultations are purchased via in-app bundles, including an "unlimited" pass that allows open consultations for 30 days from purchase (buying it again extends the window by another 30 days), subject to fair-use limits that prevent automated abuse. Purchases are final and subject to the app store (Google Play or App Store) refund policy.</p>
+      <p>App usage is measured in "units". You receive a limited number of free units, and you can purchase additional units via in-app packs (5 / 10 / 20 / 50 / 100 units), subject to fair-use limits that prevent automated abuse. Purchases are final and subject to the app store (Google Play or App Store) refund policy.</p>
 
       <h3>4. Acceptable use</h3>
       <p>You agree to use the app for its intended purpose (recipe suggestions) and not to attempt to misuse or tamper with it.</p>
@@ -209,7 +227,7 @@
       <h2>Disclaimer</h2>
       <p>Lomma's recipes are generated by AI from the ingredients you type. We filter allergens and non-halal ingredients as best we can, but this filtering is technical and not infallible — if you have an allergy (especially a severe one) or strict dietary restrictions, always verify every ingredient and product label yourself before cooking and eating. Calorie figures are estimates. Lomma is not a substitute for professional medical or dietary advice.</p>
     </div>
-    <div class="updated">Last updated: July 11, 2026</div>
+    <div class="updated">Last updated: July 22, 2026</div>
   </section>
 </div>
 
