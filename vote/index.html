@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="referrer" content="no-referrer">
 <meta name="robots" content="noindex, nofollow">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self'; connect-src https://wwpimvotqysodzcxhatn.supabase.co; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src https://wwpimvotqysodzcxhatn.supabase.co; base-uri 'none'; form-action 'none'">
 <title>لئمة — شو نطبخ اليوم؟ | Lomma — What shall we cook today?</title>
 <meta name="description" content="تصويت العيلة من لئمة: اختاروا طبخة اليوم معاً.">
 <meta property="og:type" content="website">
@@ -17,52 +17,45 @@
 <meta property="og:image:height" content="500">
 <meta name="twitter:card" content="summary_large_image">
 <style>
+  /* Same font as the app (assets/fonts, SIL OFL), served from this site. */
+  @font-face { font-family: "Tajawal"; src: url("fonts/Tajawal-Regular.ttf") format("truetype"); font-weight: 400; font-display: swap; }
+  @font-face { font-family: "Tajawal"; src: url("fonts/Tajawal-Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
+  @font-face { font-family: "Tajawal"; src: url("fonts/Tajawal-ExtraBold.ttf") format("truetype"); font-weight: 800; font-display: swap; }
+  /* Mirrors lib/core/theme/app_theme.dart: cream background, terracotta seed,
+     white cards. The app has no dark theme, so neither does this page. */
   :root {
-    --bg: #FFF8F1;
+    color-scheme: light;
+    --bg: #FFF8F1;          /* _cream */
     --card: #ffffff;
-    --ink: #2b2320;
-    --muted: #6b5d54;
-    --accent: #CB7B4B;
-    --accent-soft: #f6e3d6;
-    --line: #ecdfd3;
+    --ink: #3a2a22;
+    --muted: #7a6558;
+    --accent: #CB7B4B;      /* _terracotta */
+    --accent-dark: #b8683a;
+    --accent-soft: #fbeadf;
+    --rose: #D98A8A;        /* _warmRose, the «لئمة» wordmark colour */
+    --line: #efe2d6;
     --win: #2f7d4f;
     --win-soft: #e3f3e8;
     --err: #a1412b;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #1c1715;
-      --card: #27201d;
-      --ink: #f4ebe4;
-      --muted: #c2b3a8;
-      --accent: #e0956a;
-      --accent-soft: #3a2a21;
-      --line: #3b312c;
-      --win: #7fd0a0;
-      --win-soft: #1f3327;
-      --err: #f0a08c;
-    }
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; }
   body {
     background: var(--bg);
     color: var(--ink);
-    font-family: -apple-system, "Segoe UI", Tahoma, "Noto Naskh Arabic", Arial, sans-serif;
+    font-family: "Tajawal", -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
     line-height: 1.6;
     font-size: 17px;
   }
-  .wrap { max-width: 520px; margin: 0 auto; padding: 20px 16px 40px; min-width: 288px; }
+  .wrap { max-width: 520px; margin: 0 auto; padding: 24px 16px 40px; min-width: 288px; }
   header { text-align: center; margin: 4px 0 18px; }
-  .mark {
-    display: inline-block; width: 52px; height: 52px; border-radius: 14px;
-    background: var(--accent); color: #fff; line-height: 52px; font-size: 26px; font-weight: 800;
-  }
-  h1 { font-size: 1.45rem; margin: 10px 0 2px; }
+  .mark { display: block; width: 84px; height: 84px; margin: 0 auto; }
+  .brand { color: var(--rose); font-weight: 800; font-size: 1.15rem; margin: 0; line-height: 1.2; }
+  h1 { font-size: 1.5rem; font-weight: 800; margin: 8px 0 2px; color: var(--ink); }
   .sub { color: var(--muted); font-size: 0.95rem; margin: 0; }
   .card {
-    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
-    padding: 14px; margin: 10px 0;
+    background: var(--card); border: 1px solid var(--line); border-radius: 20px;
+    padding: 16px; margin: 10px 0; box-shadow: 0 2px 10px rgba(203, 123, 75, 0.06);
   }
   .opt {
     display: flex; align-items: flex-start; gap: 12px; width: 100%;
@@ -84,8 +77,8 @@
     border: 1px solid var(--line); background: var(--card); color: var(--ink); font: inherit;
   }
   .btn {
-    display: block; width: 100%; min-height: 52px; margin: 14px 0 0; padding: 12px;
-    border: 0; border-radius: 14px; background: var(--accent); color: #fff;
+    display: block; width: 100%; min-height: 54px; margin: 14px 0 0; padding: 12px;
+    border: 0; border-radius: 16px; background: var(--accent); color: #fff;
     font: inherit; font-weight: 800; cursor: pointer; text-align: center; text-decoration: none;
   }
   .btn[disabled] { opacity: 0.5; cursor: default; }
@@ -109,7 +102,27 @@
 <body>
 <div class="wrap">
   <header>
-    <div class="mark" aria-hidden="true">ل</div>
+    <svg class="mark" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="bowl" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#D4844F"/><stop offset="1" stop-color="#B9673A"/>
+        </linearGradient>
+        <linearGradient id="soup" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#E8A3A0"/><stop offset="1" stop-color="#DC9192"/>
+        </linearGradient>
+      </defs>
+      <g fill="none" stroke-width="5" stroke-linecap="round">
+        <path d="M45 46c-5-6 5-10 0-17s3-10 0-14" stroke="#E6B89C"/>
+        <path d="M60 46c-5-6 5-10 0-17s3-10 0-14" stroke="#E8B4B5"/>
+        <path d="M75 46c-5-6 5-10 0-17s3-10 0-14" stroke="#E6B89C"/>
+      </g>
+      <ellipse cx="60" cy="104" rx="30" ry="4" fill="#CB7B4B" opacity="0.12"/>
+      <path d="M22 62h76c0 22-17 38-38 38S22 84 22 62z" fill="url(#bowl)"/>
+      <ellipse cx="60" cy="61" rx="40" ry="8" fill="#DB8D58"/>
+      <ellipse cx="60" cy="61" rx="34" ry="5.5" fill="url(#soup)"/>
+      <ellipse cx="44" cy="59.5" rx="8" ry="1.8" fill="#fff" opacity="0.35"/>
+    </svg>
+    <p class="brand">لئمة</p>
     <h1 id="title">شو نطبخ اليوم؟</h1>
     <p class="sub" id="subtitle"></p>
   </header>
