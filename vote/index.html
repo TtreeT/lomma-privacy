@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self'; connect-src https://wwpimvotqysodzcxhatn.supabase.co; base-uri 'none'; form-action 'none'">
+<title>لئمة — شو نطبخ اليوم؟ | Lomma — What shall we cook today?</title>
+<meta name="description" content="تصويت العيلة من لئمة: اختاروا طبخة اليوم معاً.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="لئمة Lomma">
+<meta property="og:title" content="شو نطبخ اليوم؟ — صوّتوا مع العيلة">
+<meta property="og:description" content="اختار الطبخة اللي بدك ياها من لئمة. What shall we cook today? Vote with the family.">
+<meta property="og:image" content="https://ttreet.github.io/lomma-privacy/feature_graphic_1024x500.png">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="500">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root {
+    --bg: #FFF8F1;
+    --card: #ffffff;
+    --ink: #2b2320;
+    --muted: #6b5d54;
+    --accent: #CB7B4B;
+    --accent-soft: #f6e3d6;
+    --line: #ecdfd3;
+    --win: #2f7d4f;
+    --win-soft: #e3f3e8;
+    --err: #a1412b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1c1715;
+      --card: #27201d;
+      --ink: #f4ebe4;
+      --muted: #c2b3a8;
+      --accent: #e0956a;
+      --accent-soft: #3a2a21;
+      --line: #3b312c;
+      --win: #7fd0a0;
+      --win-soft: #1f3327;
+      --err: #f0a08c;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Tahoma, "Noto Naskh Arabic", Arial, sans-serif;
+    line-height: 1.6;
+    font-size: 17px;
+  }
+  .wrap { max-width: 520px; margin: 0 auto; padding: 20px 16px 40px; min-width: 288px; }
+  header { text-align: center; margin: 4px 0 18px; }
+  .mark {
+    display: inline-block; width: 52px; height: 52px; border-radius: 14px;
+    background: var(--accent); color: #fff; line-height: 52px; font-size: 26px; font-weight: 800;
+  }
+  h1 { font-size: 1.45rem; margin: 10px 0 2px; }
+  .sub { color: var(--muted); font-size: 0.95rem; margin: 0; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+    padding: 14px; margin: 10px 0;
+  }
+  .opt {
+    display: flex; align-items: flex-start; gap: 12px; width: 100%;
+    min-height: 56px; padding: 14px; margin: 10px 0; border-radius: 16px;
+    border: 2px solid var(--line); background: var(--card); color: var(--ink);
+    font: inherit; text-align: start; cursor: pointer;
+  }
+  .opt[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+  .opt:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .dot {
+    flex: 0 0 22px; height: 22px; border-radius: 50%; border: 2px solid var(--accent); margin-top: 2px;
+  }
+  .opt[aria-pressed="true"] .dot { background: var(--accent); }
+  .t { font-weight: 700; display: block; }
+  .n { color: var(--muted); font-size: 0.9rem; display: block; }
+  label { display: block; font-weight: 600; margin: 16px 0 6px; }
+  input[type="text"] {
+    width: 100%; min-height: 48px; padding: 10px 12px; border-radius: 12px;
+    border: 1px solid var(--line); background: var(--card); color: var(--ink); font: inherit;
+  }
+  .btn {
+    display: block; width: 100%; min-height: 52px; margin: 14px 0 0; padding: 12px;
+    border: 0; border-radius: 14px; background: var(--accent); color: #fff;
+    font: inherit; font-weight: 800; cursor: pointer; text-align: center; text-decoration: none;
+  }
+  .btn[disabled] { opacity: 0.5; cursor: default; }
+  .btn.ghost { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
+  .row { margin: 12px 0; }
+  .row .head { display: flex; justify-content: space-between; gap: 8px; font-weight: 700; }
+  .bar { height: 12px; border-radius: 6px; background: var(--line); overflow: hidden; margin: 6px 0 4px; }
+  .fill { height: 100%; background: var(--accent); width: 0; }
+  .row.win .fill { background: var(--win); }
+  .row.win .head::after { content: " ★"; color: var(--win); }
+  .names { color: var(--muted); font-size: 0.88rem; }
+  .banner { border-radius: 12px; padding: 10px 12px; margin: 10px 0; background: var(--win-soft); }
+  .msg { color: var(--err); margin: 10px 0; }
+  .muted { color: var(--muted); font-size: 0.9rem; }
+  .center { text-align: center; }
+  footer { margin-top: 28px; text-align: center; color: var(--muted); font-size: 0.85rem; }
+  footer a { color: var(--muted); }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="mark" aria-hidden="true">ل</div>
+    <h1 id="title">شو نطبخ اليوم؟</h1>
+    <p class="sub" id="subtitle"></p>
+  </header>
+  <main id="app" aria-live="polite"></main>
+  <footer>
+    <span id="privacy-text"></span>
+    <a id="privacy-link" href="https://ttreet.github.io/lomma-privacy/" rel="noopener noreferrer"></a>
+  </footer>
+</div>
+<script>
+"use strict";
+(function () {
+  // ---- configuration (one place) ----------------------------------------
+  const FUNCTION_URL = "https://wwpimvotqysodzcxhatn.supabase.co/functions/v1/vote_public";
+  const PLAY_URL = "https://play.google.com/store/apps/details?id=com.lomma.app";
+  const APP_STORE_URL = ""; // empty → no iOS button is rendered
+  const REFRESH_MS = 30000;
+  const REFRESH_FOR_MS = 10 * 60 * 1000;
+  const VOTER_KEY = "lomma_vote_voter"; // the ONLY thing kept in localStorage
+
+  const T = {
+    ar: {
+      dir: "rtl", lang: "ar",
+      title: "شو نطبخ اليوم؟",
+      subtitle: "العيلة بتختار — اختار طبخة وحدة",
+      loading: "لحظة…",
+      name: "اسمك الأول (اختياري)",
+      namePh: "مثلاً: ريم",
+      vote: "صوّت",
+      sending: "عم نرسل…",
+      thanks: "وصل صوتك، شكراً!",
+      change: "غيّر صوتي",
+      refresh: "تحديث النتيجة",
+      votes: (n) => (n === 0 ? "لا أصوات" : n === 1 ? "صوت واحد" : n === 2 ? "صوتين" : n + " أصوات"),
+      closesIn: (m) => (m <= 1 ? "التصويت بيسكّر خلال دقيقة" : "التصويت بيسكّر خلال " + m + " دقيقة"),
+      closed: "سكّر التصويت — هاي النتيجة النهائية",
+      winner: (t) => "الطبخة المختارة: " + t,
+      tie: (ts) => "تعادل بين: " + ts.join(" و "),
+      none: "ما حدا صوّت",
+      notFound: "ما لقينا هالتصويت — يمكن الرابط ناقص أو انتهت صلاحيته.",
+      error: "صار في مشكلة بالاتصال.",
+      retry: "حاول مرة ثانية",
+      full: "التصويت امتلأ — شكراً إلك.",
+      busy: "طلبات كثيرة — جرّب بعد شوي.",
+      tryApp: "جرّب لئمة",
+      tryAppIos: "لئمة على App Store",
+      privacy: "ما بنحفظ غير اختيارك واسمك الأول (إذا كتبته) لمدة قصيرة.",
+      privacyLink: "سياسة الخصوصية",
+    },
+    en: {
+      dir: "ltr", lang: "en",
+      title: "What shall we cook today?",
+      subtitle: "The family picks — choose one dish",
+      loading: "One moment…",
+      name: "Your first name (optional)",
+      namePh: "e.g. Sam",
+      vote: "Vote",
+      sending: "Sending…",
+      thanks: "Your vote is in — thank you!",
+      change: "Change my vote",
+      refresh: "Refresh results",
+      votes: (n) => (n === 1 ? "1 vote" : n + " votes"),
+      closesIn: (m) => (m <= 1 ? "Voting closes in a minute" : "Voting closes in " + m + " minutes"),
+      closed: "Voting has closed — final result",
+      winner: (t) => "The pick: " + t,
+      tie: (ts) => "It's a tie: " + ts.join(" & "),
+      none: "Nobody voted",
+      notFound: "We couldn't find this vote — the link may be incomplete or expired.",
+      error: "There was a connection problem.",
+      retry: "Try again",
+      full: "This vote is full — thank you.",
+      busy: "Too many requests — try again shortly.",
+      tryApp: "Try Lomma",
+      tryAppIos: "Lomma on the App Store",
+      privacy: "We keep only your choice and your first name (if you type one), for a short time.",
+      privacyLink: "Privacy policy",
+    },
+  };
+
+  const app = document.getElementById("app");
+  let L = T.ar;
+  let view = null;
+  let selected = null;
+  let votedFor = null;
+  let typedName = "";
+  let state = "loading";
+  let message = "";
+  let timer = null;
+  const startedAt = Date.now();
+
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get("p") || "";
+  const slugOk = /^[A-Za-z0-9_-]{22,64}$/.test(slug);
+
+  function voterId() {
+    try {
+      let v = window.localStorage.getItem(VOTER_KEY);
+      if (v && /^[A-Za-z0-9_-]{8,64}$/.test(v)) return v;
+      const bytes = new Uint8Array(18);
+      window.crypto.getRandomValues(bytes);
+      v = btoa(String.fromCharCode.apply(null, Array.from(bytes)))
+        .replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+      window.localStorage.setItem(VOTER_KEY, v);
+      return v;
+    } catch (e) {
+      // storage blocked (private mode): a per-page-load id still works
+      if (!voterId.mem) {
+        const bytes = new Uint8Array(18);
+        window.crypto.getRandomValues(bytes);
+        voterId.mem = Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
+      }
+      return voterId.mem;
+    }
+  }
+
+  // ---- safe DOM helpers: text only, never HTML -----------------------------
+  function el(tag, attrs, children) {
+    const n = document.createElement(tag);
+    if (attrs) {
+      for (const k of Object.keys(attrs)) {
+        if (k === "text") n.textContent = attrs[k];
+        else if (k === "onclick") n.addEventListener("click", attrs[k]);
+        else n.setAttribute(k, attrs[k]);
+      }
+    }
+    (children || []).forEach((c) => { if (c) n.appendChild(c); });
+    return n;
+  }
+  function clear(n) { while (n.firstChild) n.removeChild(n.firstChild); }
+
+  function setLocale(code) {
+    L = code === "en" ? T.en : T.ar;
+    document.documentElement.lang = L.lang;
+    document.documentElement.dir = L.dir;
+    document.title = (code === "en" ? "Lomma — " : "لئمة — ") + L.title;
+    document.getElementById("title").textContent = L.title;
+    document.getElementById("subtitle").textContent = L.subtitle;
+    document.getElementById("privacy-text").textContent = L.privacy + " ";
+    document.getElementById("privacy-link").textContent = L.privacyLink;
+  }
+
+  function winnersOf(counts) {
+    const max = Math.max(0, ...counts);
+    if (max === 0) return [];
+    return counts.map((c, i) => (c === max ? i : -1)).filter((i) => i >= 0);
+  }
+
+  function results(final) {
+    const box = el("div", { class: "card" });
+    const total = view.counts.reduce((a, b) => a + b, 0);
+    const wins = final ? winnersOf(view.counts) : [];
+    view.options.forEach((o, i) => {
+      const pct = total ? Math.round((view.counts[i] / total) * 100) : 0;
+      const fill = el("div", { class: "fill" });
+      fill.style.width = pct + "%";
+      box.appendChild(el("div", { class: "row" + (wins.indexOf(i) >= 0 ? " win" : "") }, [
+        el("div", { class: "head" }, [el("span", { text: o.title }), el("span", { text: L.votes(view.counts[i]) })]),
+        el("div", { class: "bar", role: "presentation" }, [fill]),
+        view.names[i] && view.names[i].length ? el("div", { class: "names", text: view.names[i].join("، ") }) : null,
+      ]));
+    });
+    return box;
+  }
+
+  function cta() {
+    const box = el("div", { class: "center" });
+    box.appendChild(el("a", { class: "btn", href: PLAY_URL, rel: "noopener noreferrer", target: "_blank", text: L.tryApp }));
+    if (APP_STORE_URL) {
+      box.appendChild(el("a", { class: "btn ghost", href: APP_STORE_URL, rel: "noopener noreferrer", target: "_blank", text: L.tryAppIos }));
+    }
+    return box;
+  }
+
+  function minutesLeft() {
+    return Math.max(1, Math.ceil((Date.parse(view.expires_at) - Date.now()) / 60000));
+  }
+
+  function render() {
+    clear(app);
+    if (state === "loading") { app.appendChild(el("p", { class: "center muted", text: L.loading })); return; }
+    if (state === "notfound") { app.appendChild(el("p", { class: "card center", text: L.notFound })); return; }
+    if (state === "error") {
+      app.appendChild(el("p", { class: "msg center", text: message || L.error }));
+      app.appendChild(el("button", { class: "btn", type: "button", text: L.retry, onclick: load }));
+      return;
+    }
+    if (!view.open) {
+      app.appendChild(el("p", { class: "banner", text: L.closed }));
+      const wins = winnersOf(view.counts);
+      const line = wins.length === 0 ? L.none
+        : wins.length === 1 ? L.winner(view.options[wins[0]].title)
+        : L.tie(wins.map((i) => view.options[i].title));
+      app.appendChild(el("p", { class: "center", text: line }));
+      app.appendChild(results(true));
+      app.appendChild(cta());
+      return;
+    }
+    if (state === "voted") {
+      app.appendChild(el("p", { class: "banner", text: L.thanks }));
+      app.appendChild(results(false));
+      app.appendChild(el("p", { class: "muted center", text: L.closesIn(minutesLeft()) }));
+      app.appendChild(el("button", { class: "btn ghost", type: "button", text: L.refresh, onclick: load }));
+      app.appendChild(el("button", {
+        class: "btn ghost", type: "button", text: L.change,
+        onclick: () => { selected = votedFor; state = "open"; message = ""; render(); },
+      }));
+      app.appendChild(cta());
+      return;
+    }
+    // open
+    view.options.forEach((o, i) => {
+      app.appendChild(el("button", {
+        class: "opt", type: "button", "aria-pressed": String(selected === i),
+        onclick: () => { selected = i; render(); },
+      }, [
+        el("span", { class: "dot", "aria-hidden": "true" }),
+        el("span", {}, [el("span", { class: "t", text: o.title }), o.note ? el("span", { class: "n", text: o.note }) : null]),
+      ]));
+    });
+    const input = el("input", { type: "text", id: "name", maxlength: "20", autocomplete: "given-name", placeholder: L.namePh });
+    input.value = typedName;
+    input.addEventListener("input", () => { typedName = input.value; });
+    app.appendChild(el("label", { for: "name", text: L.name }));
+    app.appendChild(input);
+    if (message) app.appendChild(el("p", { class: "msg", text: message }));
+    const btn = el("button", { class: "btn", type: "button", text: L.vote, onclick: vote });
+    if (selected === null) btn.setAttribute("disabled", "");
+    app.appendChild(btn);
+    app.appendChild(el("p", { class: "muted center", text: L.closesIn(minutesLeft()) }));
+    app.appendChild(el("button", { class: "btn ghost", type: "button", text: L.refresh, onclick: load }));
+  }
+
+  function accept(v) {
+    if (!v || !Array.isArray(v.options) || !Array.isArray(v.counts) || !Array.isArray(v.names)) throw new Error("shape");
+    view = v;
+    setLocale(v.locale);
+  }
+
+  async function load() {
+    if (!slugOk) { state = "notfound"; render(); return; }
+    try {
+      const r = await fetch(FUNCTION_URL + "?p=" + encodeURIComponent(slug), { method: "GET", cache: "no-store", credentials: "omit" });
+      if (r.status === 404) { state = "notfound"; render(); return; }
+      if (r.status === 429) { message = L.busy; if (!view) { state = "error"; } render(); return; }
+      if (!r.ok) throw new Error("http " + r.status);
+      accept(await r.json());
+      if (state === "loading" || state === "error" || state === "notfound") state = "open";
+      render();
+    } catch (e) {
+      message = L.error;
+      if (!view) state = "error";
+      render();
+    }
+  }
+
+  async function vote() {
+    if (selected === null) return;
+    message = L.sending;
+    render();
+    try {
+      const r = await fetch(FUNCTION_URL, {
+        method: "POST",
+        cache: "no-store",
+        credentials: "omit",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ p: slug, option: selected, name: typedName.trim() || undefined, voter: voterId() }),
+      });
+      if (r.status === 404) { state = "notfound"; render(); return; }
+      const body = await r.json().catch(() => ({}));
+      if (r.status === 409 && body.error === "closed") { message = ""; await load(); return; }
+      if (r.status === 409 && body.error === "full") { message = L.full; render(); return; }
+      if (r.status === 429) { message = L.busy; render(); return; }
+      if (!r.ok) throw new Error("http " + r.status);
+      accept(body);
+      votedFor = selected;
+      message = "";
+      state = "voted";
+      render();
+    } catch (e) {
+      message = L.error;
+      render();
+    }
+  }
+
+  function tick() {
+    if (Date.now() - startedAt > REFRESH_FOR_MS) { window.clearInterval(timer); return; }
+    // don't redraw under someone who is typing their name
+    const typing = document.activeElement && document.activeElement.id === "name";
+    if (document.visibilityState === "visible" && view && view.open && !typing) load();
+  }
+
+  setLocale("ar");
+  render();
+  load();
+  timer = window.setInterval(tick, REFRESH_MS);
+})();
+</script>
+</body>
+</html>
