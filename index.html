@@ -23,11 +23,7 @@
   }
   .wrap { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; }
   header { text-align: center; margin-bottom: 8px; }
-  .mark {
-    display: inline-block; width: 60px; height: 60px; border-radius: 16px;
-    background: var(--accent); color: #fff; line-height: 60px; font-size: 30px;
-    font-weight: 800; margin-bottom: 12px;
-  }
+  .mark { display: block; width: 84px; height: 84px; margin: 0 auto 8px; }
   h1 { font-size: 24px; margin: 4px 0; }
   .sub { color: var(--muted); font-size: 14px; }
   .lang-toggle { text-align: center; margin: 20px 0 28px; }
@@ -54,7 +50,26 @@
 <body>
 <div class="wrap">
   <header>
-    <div class="mark">ل</div>
+    <svg class="mark" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="bowl" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#D4844F"/><stop offset="1" stop-color="#B9673A"/>
+        </linearGradient>
+        <linearGradient id="soup" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#E8A3A0"/><stop offset="1" stop-color="#DC9192"/>
+        </linearGradient>
+      </defs>
+      <g fill="none" stroke-width="5" stroke-linecap="round">
+        <path d="M45 46c-5-6 5-10 0-17s3-10 0-14" stroke="#E6B89C"/>
+        <path d="M60 46c-5-6 5-10 0-17s3-10 0-14" stroke="#E8B4B5"/>
+        <path d="M75 46c-5-6 5-10 0-17s3-10 0-14" stroke="#E6B89C"/>
+      </g>
+      <ellipse cx="60" cy="104" rx="30" ry="4" fill="#CB7B4B" opacity="0.12"/>
+      <path d="M22 62h76c0 22-17 38-38 38S22 84 22 62z" fill="url(#bowl)"/>
+      <ellipse cx="60" cy="61" rx="40" ry="8" fill="#DB8D58"/>
+      <ellipse cx="60" cy="61" rx="34" ry="5.5" fill="url(#soup)"/>
+      <ellipse cx="44" cy="59.5" rx="8" ry="1.8" fill="#fff" opacity="0.35"/>
+    </svg>
     <h1>Lomma · لئمة</h1>
     <div class="sub">سياسة الخصوصية وشروط الاستخدام · Privacy Policy &amp; Terms of Service</div>
   </header>
@@ -70,8 +85,8 @@
       <h2>سياسة الخصوصية</h2>
       <p>نحن في لئمة نحترم خصوصيتك، وصُمّم التطبيق ليجمع أقل قدر ممكن من البيانات. توضّح هذه السياسة ما الذي نخزّنه وكيف نستخدمه.</p>
 
-      <h3>١. البيانات المحفوظة على جهازك فقط</h3>
-      <p>تُخزَّن المعلومات التالية محلياً على جهازك ولا تُرسَل إلى خوادمنا:</p>
+      <h3>١. البيانات المحفوظة على جهازك</h3>
+      <p>تُخزَّن المعلومات التالية محلياً على جهازك. لا يُرسَل منها إلى خوادمنا إلا ما تذكره الأقسام التالية صراحةً (تفضيلاتك الغذائية مع طلب الوصفة — القسم ٢، وصيغة المخاطبة — القسم ٣-ب):</p>
       <ul>
         <li>تفضيلاتك الغذائية (مثل القيود الغذائية والحساسية) واختيارك للمخاطبة، لتخصيص التجربة.</li>
         <li>نسخة محلية من رصيد تجربتك المجانية (السجلّ الأساسي محفوظ على خادمنا — انظر القسم ٣).</li>
@@ -84,7 +99,7 @@
       <p>يمكنك حذف هذه البيانات بحذف التطبيق من جهازك.</p>
 
       <h3>٢. البيانات التي تُرسَل لإنشاء الوصفات</h3>
-      <p>عندما تطلب وصفة، تُرسَل المكوّنات التي تكتبها (أو تمليها صوتياً) وتفضيلاتك المتعلّقة بالوصفة (مثل عدد الأشخاص ونوع الوجبة) إلى خادمنا الآمن، الذي يستخدم الذكاء الاصطناعي لإنشاء اقتراح الوصفة. لا نرسل أي معلومة تعرّف هويتك الشخصية مع هذا الطلب.</p>
+      <p>عندما تطلب وصفة، تُرسَل المكوّنات التي تكتبها (أو تمليها صوتياً) وتفضيلاتك المتعلّقة بالوصفة (مثل عدد الأشخاص ونوع الوجبة والحساسية والقيود الغذائية ونظامك الغذائي المختار) إلى خادمنا الآمن، الذي يستخدم الذكاء الاصطناعي لإنشاء اقتراح الوصفة. لا نرسل أي معلومة تعرّف هويتك الشخصية مع هذا الطلب.</p>
       <p>في "سفرة وحدة للعيلة" تُرسَل تفضيلات كل فرد (نظام غذائي مختار، "بلا حار"، الحساسيات، المكوّنات غير المرغوبة) لإعداد وصفة تناسب الجميع، دون أي اسم: يُعرَّف الأفراد لخادمنا بأرقام مجهولة فقط.</p>
 
       <h3>٢-أ. الإدخال الصوتي (الميكروفون)</h3>
@@ -160,8 +175,8 @@
       <h2>Privacy Policy</h2>
       <p>At Lomma we respect your privacy, and the app is designed to collect as little data as possible. This policy explains what we store and how we use it.</p>
 
-      <h3>1. Data kept only on your device</h3>
-      <p>The following is stored locally on your device and is never sent to our servers:</p>
+      <h3>1. Data kept on your device</h3>
+      <p>The following is stored locally on your device. Only what the next sections say explicitly is sent to our servers (your dietary preferences with a recipe request — section 2, and your form of address — section 3b):</p>
       <ul>
         <li>Your dietary preferences (such as restrictions and allergies) and your chosen form of address, to personalize the experience.</li>
         <li>A local copy of your free-trial balance (the authoritative record is kept on our server — see section 3).</li>
@@ -174,7 +189,7 @@
       <p>You can delete this data by removing the app from your device.</p>
 
       <h3>2. Data sent to generate recipes</h3>
-      <p>When you request a recipe, the ingredients you type (or dictate by voice) and your recipe-related preferences (such as number of people and meal type) are sent to our secure server, which uses an AI service to generate the recipe suggestion. We do not send any personally identifying information with this request.</p>
+      <p>When you request a recipe, the ingredients you type (or dictate by voice) and your recipe-related preferences (such as number of people, meal type, allergies, dietary restrictions and your chosen eating pattern) are sent to our secure server, which uses an AI service to generate the recipe suggestion. We do not send any personally identifying information with this request.</p>
       <p>For "One pot for the family", each member's preferences (a chosen eating pattern, mild, allergies, ingredients to leave out) are sent so that the recipe suits everyone, without any name: members reach our server only as anonymous numbers.</p>
 
       <h3>2a. Voice input (microphone)</h3>
